@@ -1,0 +1,5 @@
+dash==2.0.0
+pandas
+psycopg2-binary
+azure-storage-blob
+python-dotenv
