@@ -3,8 +3,7 @@ version: '3.8'
 
 services:
   dash-app:
-    image: dash-app
-    build: .
+    image: seanstilwell/sampledashapp:latest
     ports:
       - "8080:8080"
     volumes:
