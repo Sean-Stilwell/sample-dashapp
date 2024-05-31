@@ -2,9 +2,12 @@
 version: '3.8'
 
 services:
-  dash-app:
-    image: seanstilwell/sampledashapp:latest
-    ports:
-      - "8080:8080"
+  web:
+    image: python:3.9-slim
+    container_name: dash-app
     volumes:
       - .:/app
+    working_dir: /app
+    command: bash -c "pip install --no-cache-dir -r requirements.txt && python app.py"
+    ports:
+      - "8080:8080"

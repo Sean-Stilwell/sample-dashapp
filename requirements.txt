@@ -1,6 +1,7 @@
-dash==2.0.0
+dash
 pandas
 psycopg2-binary
+azure-identity
 azure-storage-blob
 azure-keyvault-secrets
 python-dotenv
