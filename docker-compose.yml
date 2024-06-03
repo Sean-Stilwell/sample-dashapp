@@ -4,7 +4,7 @@ version: '3.8'
 services:
   web:
     build: .
-    image: seanstilwell/dash-fsdh-sample:latest
+    image: ghcr.io/ssc-sp/fsdh-dash-sample:latest
     container_name: dash-app
     ports:
       - "80:80"
