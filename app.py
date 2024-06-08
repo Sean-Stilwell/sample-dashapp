@@ -17,7 +17,9 @@ DB_USER = secret_client.get_secret("datahub-psql-admin").value
 DB_PASS = secret_client.get_secret("datahub-psql-password").value
 
 # Initialize the Dash app
-app = dash.Dash(__name__)
+app = dash.Dash(__name__,
+                requests_pathname_prefix="/webapp-DIE3/",
+                routes_pathname_prefix="/webapp-DIE3/")
 
 # Define the layout of the app
 app.layout = html.Div([
