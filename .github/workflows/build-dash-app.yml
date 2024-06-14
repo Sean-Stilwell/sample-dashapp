@@ -3,7 +3,7 @@ name: Build and Push Dash App Image to GHCR
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
