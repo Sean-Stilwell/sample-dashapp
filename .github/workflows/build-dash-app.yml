@@ -22,16 +22,16 @@ jobs:
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Convert GitHub repository owner to lowercase
+      - name: Convert GitHub repository to lowercase
         id: vars
-        run: echo "OWNER=${{ github.repository_owner }}" | awk '{print tolower($0)}' | tee -a $GITHUB_ENV
+        run: echo "REPO=${{ github.repository }}" | awk '{print tolower($0)}' | tee -a $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ env.OWNER }}/my-image:latest
+          tags: ghcr.io/${{ env.REPO }}/dash-app:latest
 
       - name: Image digest
         run: echo "Image digest is ${{ steps.docker_build.outputs.digest }}"
