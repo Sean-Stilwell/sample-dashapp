@@ -22,24 +22,12 @@ jobs:
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Set IMAGE_TAG
-        run: echo "IMAGE_TAG=ghcr.io/${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
-
-      - name: Print IMAGE_TAG
-        run: echo $IMAGE_TAG
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_TAG }}:latest
-
-      - name: Image digest
-        run: echo "Image digest is ${{ steps.docker_build.outputs.digest }}"
-
-      - name: Image URL
-        run: echo "Image URL is ghcr.io/${{ env.IMAGE_TAG }}:latest"
+          tags: ghcr.io/sean-stilwell/sample-dashapp:latest
 
       - name: Logout of GitHub Container Registry
         run: docker logout ghcr.io
