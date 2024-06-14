@@ -22,16 +22,12 @@ jobs:
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Convert GitHub repository to lowercase
-        id: vars
-        run: echo "REPOSITORY_TAG=ghcr.io/${{ github.repository }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
-
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ env.REPOSITORY_TAG }}:latest
+          tags: ghcr.io/${{ github.repository }}:latest
 
       - name: Image digest
         run: echo "Image digest is ${{ steps.docker_build.outputs.digest }}"
