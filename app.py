@@ -1,29 +1,26 @@
 import dash
 from dash.dependencies import Input, Output, State
 from dash import html, dcc
-from azure.identity import DefaultAzureCredential
-from azure.keyvault.secrets import SecretClient
 import psycopg2
 import pandas as pd
+import os
 
 # Initialize the Dash app
 app = dash.Dash(__name__,
                 requests_pathname_prefix="/webapp-DW1/",
                 routes_pathname_prefix="/webapp-DW1/")
 
-KEY_VAULT_URL = "https://fsdh-proj-dw1-poc-kv.vault.azure.net/"
 error_occur = False
 
 try:
     # Retrieve the secrets containing DB connection details
-    credential = DefaultAzureCredential()
-    secret_client = SecretClient(vault_url=KEY_VAULT_URL, credential=credential)
 
     # Retrieve the secrets containing DB connection details
     DB_NAME = "fsdh"
-    DB_HOST = secret_client.get_secret("datahub-psql-server").value
-    DB_USER = secret_client.get_secret("datahub-psql-admin").value
-    DB_PASS = secret_client.get_secret("datahub-psql-password").value
+    DB_HOST = os.getenv('DATAHUB_PSQL_SERVER')
+    print(f"DB_HOST is {DB_HOST}")
+    DB_USER = os.getenv('DATAHUB_PSQL_USER')
+    DB_PASS = os.getenv('DATAHUB_PSQL_PASSWORD')
 except Exception as e:
     error_occur = True
     print(f"An error occurred: {e} | Une erreur s'est produite: {e}")
