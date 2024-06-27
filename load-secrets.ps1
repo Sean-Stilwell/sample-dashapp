@@ -16,7 +16,7 @@ if (-not (Get-Module -Name Microsoft.PowerShell.SecretManagement -ListAvailable)
 
 # Connect to Azure if not already connected
 $env:AzureTenantId = "8c1a4d93-d828-4d0e-9303-fd3bd611c822"
-Connect-AzAccount -Tenant $env:AzureTenantId -Subscription 
+Connect-AzAccount -Tenant $env:AzureTenantId 
 
 # Optional: Set the context to the specific Azure subscription
 # Get-AzSubscription -SubscriptionName "Your Subscription Name" | Set-AzContext
