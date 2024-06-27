@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug app.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "app.py",
+      "console": "integratedTerminal",
+      "env": {
+        "DATAHUB_PSQL_SERVER": "",
+        "DATAHUB_PSQL_USER": "",
+        "DATAHUB_PSQL_PASSWORD": ""
+      }
+    }
+  ]
+}
