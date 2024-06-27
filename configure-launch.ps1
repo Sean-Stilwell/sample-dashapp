@@ -29,7 +29,6 @@ Write-Output "Retrieving secrets from Key Vault: $KeyVaultName"
 $DB_HOST = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "datahub-psql-server" -AsPlainText
 $DB_USER = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "datahub-psql-admin" -AsPlainText
 $DB_PASS = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name "datahub-psql-password" -AsPlainText
-#Register-SecretVault -Name MyVault -ModuleName Microsoft.PowerShell.SecretStore -DefaultVault
 
 # Output the secrets (optional, for verification)
 # load launch.json
