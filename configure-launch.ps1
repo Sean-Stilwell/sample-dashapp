@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 # Install the Az module (if not already installed)
 # Az Module is required to interact with Azure Key Vault
 # Install Az module if not already installed
