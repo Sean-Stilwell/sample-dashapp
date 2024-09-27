@@ -7,8 +7,8 @@ import os
 
 # Initialize the Dash app
 app = dash.Dash(__name__,
-                requests_pathname_prefix="/webapp-DW1/",
-                routes_pathname_prefix="/webapp-DW1/")
+                requests_pathname_prefix="/app/DW1/",
+                routes_pathname_prefix="/app/DW1/")
 
 error_occur = False
 
